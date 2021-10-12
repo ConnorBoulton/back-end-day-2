@@ -24,7 +24,8 @@ module.exports = {
         let index = houses.findIndex((element) => +element.id === +id)
         
         if(houses[index].price < 10000 && type === 'minus'){
-            res.status(400).send("Can't go below 0")
+            houses[index].price = 0
+            res.status(200).send(houses)
         } else if (type === 'plus'){
             houses[index].price += 10000
             res.status(200).send(houses)
